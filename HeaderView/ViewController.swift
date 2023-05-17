@@ -21,13 +21,7 @@ class ViewController: UIViewController {
     private let titles: [String] = ["Type", "From", "Birthday", "Member since"]
     private let values: [String] = ["Customer", "Vancouver, Canada", "Jul 2022", "Jul 2022"]
     
-    private var testStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    private lazy var testStack = UIStackView.makeForStackView(axis: .vertical, distribution: .equalSpacing)
     
     override func viewDidLoad() {
         super.viewDidLoad()

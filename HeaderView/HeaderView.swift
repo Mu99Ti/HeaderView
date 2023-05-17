@@ -10,29 +10,9 @@ import UIKit
 class HeaderView: UIView {
     
     // MARK: - Private Properties
-    
-    private lazy var headerStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
-    private lazy var profileStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 20
-        return stackView
-    }()
-    
-    private lazy var titleStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.spacing = 12
-        stackView.axis = .vertical
-        return stackView
-    }()
+    private lazy var headerStackView = UIStackView.makeForStackView(axis: .vertical, spacing: 20)
+    private lazy var titleStackView = UIStackView.makeForStackView(axis: .vertical, spacing: 12)
+    private lazy var profileStackView = UIStackView.makeForStackView(axis: .vertical,spacing: 20, distribution: .equalSpacing)
     
     private let titles: [String] = ["Type", "From", "Birthday", "Member since"]
     private let values: [String] = ["Customer", "Vancouver, Canada", "Jul 2022", "Jul 2022"]

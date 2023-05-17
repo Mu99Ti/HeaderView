@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B5DA9172A152AE100EC3907 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5DA9162A152AE100EC3907 /* Extensions.swift */; };
 		7B832F7D2A0CF85600EC3755 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B832F7C2A0CF85600EC3755 /* AppDelegate.swift */; };
 		7B832F812A0CF85600EC3755 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B832F802A0CF85600EC3755 /* ViewController.swift */; };
 		7B832F862A0CF85800EC3755 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B832F852A0CF85800EC3755 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B5DA9162A152AE100EC3907 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7B832F792A0CF85600EC3755 /* HeaderView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeaderView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B832F7C2A0CF85600EC3755 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B832F802A0CF85600EC3755 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				7BB1258A2A123C9C00B864A2 /* ProfileView.swift */,
+				7B5DA9162A152AE100EC3907 /* Extensions.swift */,
 				7B832F7C2A0CF85600EC3755 /* AppDelegate.swift */,
 				7B832F802A0CF85600EC3755 /* ViewController.swift */,
 				7B832FAC2A0CFA5A00EC3755 /* TitleView.swift */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B832F812A0CF85600EC3755 /* ViewController.swift in Sources */,
+				7B5DA9172A152AE100EC3907 /* Extensions.swift in Sources */,
 				7B832F7D2A0CF85600EC3755 /* AppDelegate.swift in Sources */,
 				7BB1258B2A123C9C00B864A2 /* ProfileView.swift in Sources */,
 				7B832FAD2A0CFA5A00EC3755 /* TitleView.swift in Sources */,

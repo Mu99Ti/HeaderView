@@ -24,31 +24,10 @@ class ProfileView: UIView {
         return imageView
     }()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.text = "Jessica Smith"
-        label.font = UIFont(name: "Arial Bold", size: 18)
-        return label
-    }()
+    private lazy var titleLabel = UILabel.makeForLabelView(text: "Jessica Smith", font: UIFont(name: "Arial Bold", size: 18), textColor: .black)
+    private lazy var emailLabel = UILabel.makeForLabelView(text: "Jessica@gmail.com", font: UIFont(name: "Arial Bold", size: 16), textColor: .black.withAlphaComponent(0.3))
     
-    private lazy var emailLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black.withAlphaComponent(0.3)
-        label.font = UIFont(name: "Arial Bold", size: 16)
-        label.text = "Jessica@gmail.com"
-        return label
-    }()
-    
-    private lazy var profileStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 12
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    private lazy var profileStackView = UIStackView.makeForStackView(axis: .vertical, spacing: 12, alignment: .center, distribution: .equalSpacing)
     
     // MARK: - Initializing
     override init(frame: CGRect) {

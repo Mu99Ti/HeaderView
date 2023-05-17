@@ -10,33 +10,9 @@ import UIKit
 class TitleView: UIView {
     
     // MARK: - Private Properties
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.text = "Type"
-        label.font = UIFont(name: "Arial", size: 15)
-        label.textColor = .systemGray.withAlphaComponent(1)
-        return label
-    }()
-    
-    private lazy var valueLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .right
-        label.textColor = .black
-        label.font = UIFont(name: "Arial", size: 15)
-        label.text = "Customer"
-        return label
-    }()
-    
-    private lazy var titleStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 0
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    private lazy var titleLabel = UILabel.makeForLabelView(text: "Type", textAlignment: .left, font: UIFont(name: "Arial", size: 15), textColor: .systemGray.withAlphaComponent(1))
+    private lazy var valueLabel = UILabel.makeForLabelView(text: "Customer", textAlignment: .right, font: UIFont(name: "Arial", size: 15), textColor: .black)
+    private lazy var titleStackView = UIStackView.makeForStackView(axis: .horizontal, spacing: 0, alignment: .fill, distribution: .fillProportionally)
     
     // MARK: - Initializing
     override init(frame: CGRect) {
@@ -70,15 +46,3 @@ class TitleView: UIView {
     }
 }
 
-// MARK: - Extensions
-extension UIStackView {
-    static func makeForStackView(axis: NSLayoutConstraint.Axis = .vertical, spacing: CGFloat = 8, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fillProportionally) -> UIStackView {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = axis
-        stackView.spacing = spacing
-        stackView.alignment = alignment
-        stackView.distribution = distribution
-        return stackView
-    }
-}
