@@ -14,11 +14,13 @@ class ViewController: UIViewController {
     private let titleView2 = TitleView()
     private let titleView3 = TitleView()
     private let titleView4 = TitleView()
-    private let titleView5 = TitleView()
     private let profileView = ProfileView()
     private let headerView = HeaderView()
     private var titleViews: [TitleView] = []
 
+    private let titles: [String] = ["Type", "From", "Birthday", "Member since"]
+    private let values: [String] = ["Customer", "Vancouver, Canada", "Jul 2022", "Jul 2022"]
+    
     private var testStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -36,7 +38,10 @@ class ViewController: UIViewController {
         titleViews.append(titleView2)
         titleViews.append(titleView3)
         titleViews.append(titleView4)
-        titleViews.append(titleView5)
+        
+        titleViews.enumerated().forEach { (index, value) in
+            value.configureText(title: titles[index], value: values[index])
+        }
         
         // MARK: - Add subviews
         view.addSubview(headerView)
@@ -51,4 +56,5 @@ class ViewController: UIViewController {
         ])
     }
 }
+
 

@@ -29,10 +29,13 @@ class HeaderView: UIView {
     
     private lazy var titleStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.spacing = 10
+        stackView.spacing = 12
         stackView.axis = .vertical
         return stackView
     }()
+    
+    private let titles: [String] = ["Type", "From", "Birthday", "Member since"]
+    private let values: [String] = ["Customer", "Vancouver, Canada", "Jul 2022", "Jul 2022"]
     
     // MARK: - Initializing
     override init(frame: CGRect) {
@@ -65,7 +68,15 @@ class HeaderView: UIView {
         titleViews.forEach { titleView in
             self.titleStackView.addArrangedSubview(titleView)
         }
+        
+//        configureTitleViewsText(titleViews, titles: titles, values: values)
     }
+    
+//    private func configureTitleViewsText(_ titleViews: [TitleView], titles: String], values: [String]) {
+//        titleViews.forEach { titleView in
+//            titleView.configureText(title: titles[index(ofAccessibilityElement: titleView)], value: values[index(ofAccessibilityElement: titleView)])
+//        }
+    
 }
 
 

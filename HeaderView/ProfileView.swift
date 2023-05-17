@@ -40,7 +40,7 @@ class ProfileView: UIView {
         return label
     }()
     
-    private lazy var headerStackView: UIStackView = {
+    private lazy var profileStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -59,10 +59,10 @@ class ProfileView: UIView {
         
         // MARK: - Add subviews
         addSubview(containerView)
-        containerView.addSubview(headerStackView)
-        headerStackView.addArrangedSubview(profileImageView)
-        headerStackView.addArrangedSubview(titleLabel)
-        headerStackView.addArrangedSubview(emailLabel)
+        containerView.addSubview(profileStackView)
+        profileStackView.addArrangedSubview(profileImageView)
+        profileStackView.addArrangedSubview(titleLabel)
+        profileStackView.addArrangedSubview(emailLabel)
         
         // MARK: - Setup Constraints
         NSLayoutConstraint.activate([
@@ -73,10 +73,10 @@ class ProfileView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            headerStackView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            headerStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            headerStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            headerStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
+            profileStackView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            profileStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            profileStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            profileStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
         ])
         
         NSLayoutConstraint.activate([

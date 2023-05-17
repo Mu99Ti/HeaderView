@@ -14,7 +14,8 @@ class TitleView: UIView {
         let label = UILabel()
         label.textAlignment = .left
         label.text = "Type"
-        label.textColor = .systemGray.withAlphaComponent(0.7)
+        label.font = UIFont(name: "Arial", size: 15)
+        label.textColor = .systemGray.withAlphaComponent(1)
         return label
     }()
     
@@ -22,6 +23,7 @@ class TitleView: UIView {
         let label = UILabel()
         label.textAlignment = .right
         label.textColor = .black
+        label.font = UIFont(name: "Arial", size: 15)
         label.text = "Customer"
         return label
     }()
