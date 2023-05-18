@@ -19,6 +19,21 @@ extension UIStackView {
     }
 }
 
+extension UIStackView {
+    func removeAllArrangedSubviews() {
+        let removedSubviews = arrangedSubviews.reduce([]) { (allSubviews, subview) -> [UIView] in
+            self.removeArrangedSubview(subview)
+            return allSubviews + [subview]
+        }
+        
+        // Deactivate all constraints
+        NSLayoutConstraint.deactivate(removedSubviews.flatMap({ $0.constraints }))
+        
+        // Remove the views from self
+        removedSubviews.forEach({ $0.removeFromSuperview() })
+    }
+}
+
 extension UILabel {
     static func makeForLabelView(text: String? = nil, textAlignment: NSTextAlignment = .left, font: UIFont? = UIFont(name: "Arial", size: 10), textColor: UIColor = .black) -> UILabel {
         let label = UILabel()
@@ -31,11 +46,4 @@ extension UILabel {
     }
 }
 
-extension UIImageView {
-    static func makeForImageView(image: UIImage? = nil, contentMode: UIView.ContentMode = .scaleAspectFit) -> UIImageView {
-        let imageView = UIImageView()
-        imageView.image = image
-        imageView.contentMode = contentMode
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-    }
-}
+

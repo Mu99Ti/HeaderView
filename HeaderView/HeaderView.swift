@@ -10,31 +10,42 @@ import UIKit
 class HeaderView: UIView {
     
     // MARK: - Private Properties
-    private lazy var headerStackView = UIStackView.makeForStackView(axis: .vertical, spacing: 20)
+    private lazy var stackView = UIStackView.makeForStackView(axis: .vertical, spacing: 20)
     private lazy var titleStackView = UIStackView.makeForStackView(axis: .vertical, spacing: 12)
     private lazy var profileStackView = UIStackView.makeForStackView(axis: .vertical,spacing: 20, distribution: .equalSpacing)
+    private lazy var titleView = TitleView()
+    private lazy var titleView2 = TitleView()
+    private lazy var titleView3 = TitleView()
+    private lazy var titleView4 = TitleView()
+    private lazy var profileView = ProfileView()
     
-    private let titles: [String] = ["Type", "From", "Birthday", "Member since"]
-    private let values: [String] = ["Customer", "Vancouver, Canada", "Jul 2022", "Jul 2022"]
+    private var titleViews: [TitleView] = []
     
     // MARK: - Initializing
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        // MARK: - Add subviews
-        addSubview(headerStackView)
-        headerStackView.addArrangedSubview(profileStackView)
-        headerStackView.addArrangedSubview(titleStackView)
+        // MARK: - Add Subviews
+        addSubview(stackView)
+        stackView.addArrangedSubview(profileStackView)
+        stackView.addArrangedSubview(titleStackView)
         
         // MARK: - Setup Constraints
         NSLayoutConstraint.activate([
-            headerStackView.topAnchor.constraint(equalTo: topAnchor),
-            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor)
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
+        
+        // MARK: - Configure View
+        titleViews.append(titleView)
+        titleViews.append(titleView2)
+        titleViews.append(titleView3)
+        titleViews.append(titleView4)
+        
+        backgroundColor = .systemBackground
+        setup(profileView, titleViews)
     }
     
     @available(*, unavailable)
@@ -42,35 +53,22 @@ class HeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Public Methods
-    public func configure(_ profileView: ProfileView, _ titleViews: [TitleView]) {
+    // MARK: - Private Methods
+    private func setup(_ profileView: ProfileView, _ titleViews: [TitleView]) {
+        titleStackView.removeAllArrangedSubviews()
         self.profileStackView.addArrangedSubview(profileView)
         titleViews.forEach { titleView in
             self.titleStackView.addArrangedSubview(titleView)
         }
-        
-//        configureTitleViewsText(titleViews, titles: titles, values: values)
     }
     
-//    private func configureTitleViewsText(_ titleViews: [TitleView], titles: String], values: [String]) {
-//        titleViews.forEach { titleView in
-//            titleView.configureText(title: titles[index(ofAccessibilityElement: titleView)], value: values[index(ofAccessibilityElement: titleView)])
-//        }
-    
+    // MARK: - Internal Methods
+    internal func configure(image: UIImage? = UIImage(systemName: "person.crop.circle.fill"), name: String, email: String, titles: [String], values: [String]) {
+        self.titleViews.enumerated().forEach { (index, value) in
+            value.configureText(title: titles[index], value: values[index])
+            value.translatesAutoresizingMaskIntoConstraints = false
+        }
+        profileView.configure(image: image, name: name, email: email)
+        profileView.translatesAutoresizingMaskIntoConstraints = false
+    }
 }
-
-
-//func configure(_ model: Model) {
-//    let mirorr = Mirror(reflecting: model)
-//    mirorr.children.forEach { child in
-//        if let value = child.value as? String {
-//            let title = TitleView()
-//            /*
-//             add text
-//             add to stackview
-//             */
-//
-//        }
-//    }
-//
-//}

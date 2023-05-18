@@ -12,36 +12,33 @@ class ProfileView: UIView {
     // MARK: - Private Properties
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var profileImageView: UIImageView = {
-        let image = UIImage(systemName: "person.circle.fill")
-        let imageView = UIImageView(image: image)
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private lazy var titleLabel = UILabel.makeForLabelView(text: "Jessica Smith", font: UIFont(name: "Arial Bold", size: 18), textColor: .black)
-    private lazy var emailLabel = UILabel.makeForLabelView(text: "Jessica@gmail.com", font: UIFont(name: "Arial Bold", size: 16), textColor: .black.withAlphaComponent(0.3))
+    private lazy var titleLabel = UILabel.makeForLabelView(font: UIFont(name: "Arial Bold", size: 18), textColor: .black)
+    private lazy var emailLabel = UILabel.makeForLabelView(font: UIFont(name: "Arial Bold", size: 16), textColor: .black.withAlphaComponent(0.3))
     
-    private lazy var profileStackView = UIStackView.makeForStackView(axis: .vertical, spacing: 12, alignment: .center, distribution: .equalSpacing)
+    private lazy var stackView = UIStackView.makeForStackView(axis: .vertical, spacing: 12, alignment: .center, distribution: .equalSpacing)
     
     // MARK: - Initializing
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .systemYellow
         translatesAutoresizingMaskIntoConstraints = false
         
         // MARK: - Add subviews
         addSubview(containerView)
-        containerView.addSubview(profileStackView)
-        profileStackView.addArrangedSubview(profileImageView)
-        profileStackView.addArrangedSubview(titleLabel)
-        profileStackView.addArrangedSubview(emailLabel)
+        containerView.addSubview(stackView)
+        stackView.addArrangedSubview(profileImageView)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(emailLabel)
         
         // MARK: - Setup Constraints
         NSLayoutConstraint.activate([
@@ -52,10 +49,10 @@ class ProfileView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            profileStackView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            profileStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            profileStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            profileStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
+            stackView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -69,9 +66,10 @@ class ProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Public Methods
-    public func configureText(_ title: String, _ email: String) {
-        titleLabel.text = title
+    // MARK: - Internal Methods
+    internal func configure(image: UIImage?, name: String, email: String) {
+        titleLabel.text = name
         emailLabel.text = email
+        profileImageView.image = image
     }
 }

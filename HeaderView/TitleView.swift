@@ -10,27 +10,25 @@ import UIKit
 class TitleView: UIView {
     
     // MARK: - Private Properties
-    private lazy var titleLabel = UILabel.makeForLabelView(text: "Type", textAlignment: .left, font: UIFont(name: "Arial", size: 15), textColor: .systemGray.withAlphaComponent(1))
-    private lazy var valueLabel = UILabel.makeForLabelView(text: "Customer", textAlignment: .right, font: UIFont(name: "Arial", size: 15), textColor: .black)
-    private lazy var titleStackView = UIStackView.makeForStackView(axis: .horizontal, spacing: 0, alignment: .fill, distribution: .fillProportionally)
+    private lazy var titleLabel = UILabel.makeForLabelView(textAlignment: .left, font: UIFont(name: "Arial", size: 15), textColor: .systemGray.withAlphaComponent(1))
+    private lazy var valueLabel = UILabel.makeForLabelView(textAlignment: .right, font: UIFont(name: "Arial", size: 15), textColor: .black)
+    private lazy var stackView = UIStackView.makeForStackView(axis: .horizontal, spacing: 0, alignment: .fill, distribution: .fillProportionally)
     
-    // MARK: - Initializing
+    // MARK: - Initializing View
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        // MARK: - Add subviews
-        addSubview(titleStackView)
-        titleStackView.addArrangedSubview(titleLabel)
-        titleStackView.addArrangedSubview(valueLabel)
+        // MARK: - Add Subviews
+        addSubview(stackView)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(valueLabel)
         
         // MARK: - Setup Constraints
         NSLayoutConstraint.activate([
-            titleStackView.topAnchor.constraint(equalTo: topAnchor),
-            titleStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            titleStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            titleStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)
+            stackView.topAnchor.constraint(equalTo: self.topAnchor),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
         ])
     }
     
